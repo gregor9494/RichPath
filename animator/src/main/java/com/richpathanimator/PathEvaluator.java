@@ -22,9 +22,13 @@ public class PathEvaluator implements TypeEvaluator<PathDataNode[]> {
 
         for (int i = 0; i < startPathDataNodes.length; i++) {
             for (int j = 0; j < startPathDataNodes[i].getParams().length; j++) {
+                try{
                 float startFloat = startPathDataNodes[i].getParams()[j];
                 float value = startFloat + fraction * (endPathDataNodes[i].getParams()[j] - startFloat);
                 evaluatedNodes[i].getParams()[j] = value;
+                }catch(Exception ex){
+                    ex.printStackTrace();
+                }
             }
         }
 
